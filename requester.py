@@ -5,9 +5,9 @@ class Requester:
     def __init__(self):
        return
 
-    def request(self, latitude, longitude):
+    def request(self):
         headers = {"User-Agent": "weathertracker"}
-        url = f"https://api.weather.gov/points/{latitude},{longitude}"
+        url = f"https://api.weather.gov/stations/"
         try:
             response = requests.get(url, headers=headers)
             response.raise_for_status()
