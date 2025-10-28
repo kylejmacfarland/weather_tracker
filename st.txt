@@ -1,0 +1,82 @@
+0    Andover, Aeroflex-Andover Airport
+Name: name, dtype: object
+0    Westfield, Barnes Municipal Airport
+Name: name, dtype: object
+0    Windsor Locks, Bradley International Airport
+Name: name, dtype: object
+0    Bridgeport, Sikorsky Memorial Airport
+Name: name, dtype: object
+0    Block Island State Airport
+Name: name, dtype: object
+0    Monmouth Executive Airport
+Name: name, dtype: object
+0    Caldwell, Essex County Airport
+Name: name, dtype: object
+0    Chicopee Falls / Westover Air Force Base
+Name: name, dtype: object
+0    Danbury, Danbury Municipal Airport
+Name: name, dtype: object
+0    Newark, Newark International Airport
+Name: name, dtype: object
+0    The Gabreski Airport
+Name: name, dtype: object
+0    Farmingdale - Republic Airport
+Name: name, dtype: object
+0    Sussex, Sussex Airport
+Name: name, dtype: object
+0    Groton / New London, Groton / New London Airport
+Name: name, dtype: object
+0    Hartford, Hartford-Brainard Airport
+Name: name, dtype: object
+0    White Plains - Westchester County Airport
+Name: name, dtype: object
+0    New Haven, Tweed-New Haven Airport
+Name: name, dtype: object
+0    Shirley, Brookhaven Airport
+Name: name, dtype: object
+0    Willimantic, Windham Airport
+Name: name, dtype: object
+0    Islip, Long Island Mac Arthur Airport
+Name: name, dtype: object
+0    New York, Kennedy International Airport
+Name: name, dtype: object
+0    East Hampton Town Airport
+Name: name, dtype: object
+0    New York, La Guardia Airport
+Name: name, dtype: object
+0    Montgomery, Orange County Airport
+Name: name, dtype: object
+0    Ocean County Airport
+Name: name, dtype: object
+0    Meriden, Meriden Markham Municipal Airport
+Name: name, dtype: object
+0    Morristown Airport
+Name: name, dtype: object
+0    Monticello, Sullivan County International Airport
+Name: name, dtype: object
+0    Montauk, Montauk Airport
+Name: name, dtype: object
+0    Lakehurst Naval Air Station
+Name: name, dtype: object
+0    New York City, Central Park
+Name: name, dtype: object
+0    Worcester, Worcester Regional Airport
+Name: name, dtype: object
+0    Oxford, Waterbury-Oxford Airport
+Name: name, dtype: object
+0    Philadelphia, Northeast Philadelphia Airport
+Name: name, dtype: object
+0    Poughkeepsie, Dutchess County Airport
+Name: name, dtype: object
+0    Somerville, Somerset Airport
+Name: name, dtype: object
+0    Newburgh / Stewart
+Name: name, dtype: object
+0    Teterboro, Teterboro Airport
+Name: name, dtype: object
+0    Trenton-Mercer Airport
+Name: name, dtype: object
+0    Mcguire Air Force Base
+Name: name, dtype: object
+0    Westerly, Westerly State Airport
+Name: name, dtype: object

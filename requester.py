@@ -5,17 +5,20 @@ class Requester:
     def __init__(self):
        return
 
-    def request(self):
+    def request(self, uri):
+        url = f"https://api.weather.gov/{uri}"
+        return self.request_url(url)
+
+    def request_url(self, url):
         headers = {"User-Agent": "weathertracker"}
-        url = f"https://api.weather.gov/stations/"
         try:
             response = requests.get(url, headers=headers)
             response.raise_for_status()
             return response.json()
-        except HTTPError:
+        except requests.exceptions.HTTPError:
             print(f"HTTP Error: {response.status_code}")
-        except Timeout:
+        except requests.exceptions.Timeout:
             print("Request timed out.")
-        except RequestException:
+        except requests.exceptions.RequestException:
             print("Request exception.")
         return {}
