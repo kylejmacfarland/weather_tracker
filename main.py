@@ -35,17 +35,8 @@ def retrieve_observation(latitude, longitude):
     print()
     # Retrieve forecasted weather data.
     data = r.request_url(forecast_url)
-    periods = data["properties"]["periods"]
-    for p in periods:
-        print(f"{p["name"]}:")
-        print(f"{p["shortForecast"]}")
-        temperature = p["temperature"]
-        print(f"Temperature:\t{to_celcius(temperature)} C, {temperature} F")
-        windspeed = p["windSpeed"]
-        print(f"Wind Speed:\t{windspeed}")
-        precipitation = p["probabilityOfPrecipitation"]["value"]
-        print(f"Chance of Rain:\t{precipitation} %")
-        print()
+    periods = pd.json_normalize(data["properties"]["periods"])
+    print(periods[["name", "shortForecast", "temperature", "windSpeed", "probabilityOfPrecipitation.value"]].to_string(index=False))
 
 def retrieve_stations(id):
     r = Requester()
