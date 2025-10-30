@@ -18,7 +18,7 @@ def retrieve_observation(latitude, longitude):
     r = Requester()
     data = r.request(f"points/{latitude},{longitude}")
     station_url = data["properties"]["observationStations"]
-    forecast_url = data["properties"]["forecastHourly"]
+    forecast_url = data["properties"]["forecast"]
     # Retrieve current weather data.
     data = r.request_url(station_url)
     nearest_station = data["observationStations"][0]
@@ -43,8 +43,6 @@ def retrieve_observation(latitude, longitude):
         print(f"Temperature:\t{to_celcius(temperature)} C, {temperature} F")
         windspeed = p["windSpeed"]
         print(f"Wind Speed:\t{windspeed}")
-        humidity = p["relativeHumidity"]["value"]
-        print(f"Humidity:\t{humidity} %")
         precipitation = p["probabilityOfPrecipitation"]["value"]
         print(f"Chance of Rain:\t{precipitation} %")
         print()
