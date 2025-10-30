@@ -1,6 +1,8 @@
 from requester import Requester
+from plot import render_plot
 import pandas as pd
 import sqlite3
+from datetime import datetime
 
 def to_celcius(f) -> float:
     return (f - 32.0) / 1.8
@@ -21,22 +23,17 @@ def retrieve_observation(latitude, longitude):
     forecast_url = data["properties"]["forecast"]
     # Retrieve current weather data.
     data = r.request_url(station_url)
-    nearest_station = data["observationStations"][0]
+    data = r.request_url(data["observationStations"][0] + "/observations/latest")
+    current = pd.json_normalize(data["properties"])
     print("Current:")
-    data = r.request_url(nearest_station + "/observations/latest")
-    temperature = data["properties"]["temperature"]["value"]
-    print(f"Temperature:\t{temperature} C, {to_fahrenheit(temperature)} F")
-    windspeed = data["properties"]["windSpeed"]["value"]
-    print(f"Wind Speed:\t{windspeed} KPH, {to_mph(windspeed)} MPH")
-    humidity = data["properties"]["relativeHumidity"]["value"]
-    print(f"Humidity:\t{humidity} %")
-    precipitation = data["properties"]["precipitationLastHour"]["value"]
-    print(f"Precipitation (Last Hour):\t{precipitation} mm")
-    print()
+    print(current[["temperature.value", "windSpeed.value", "relativeHumidity.value", "precipitationLastHour.value"]])
+    
     # Retrieve forecasted weather data.
     data = r.request_url(forecast_url)
     periods = pd.json_normalize(data["properties"]["periods"])
     print(periods[["name", "shortForecast", "temperature", "windSpeed", "probabilityOfPrecipitation.value"]].to_string(index=False))
+    times = [datetime.strptime(t[:19], "%Y-%m-%dT%H:%M:%S") for t in periods["startTime"]]
+    render_plot(times, periods[["temperature"]], "Day", "Temperature (F)", "Temperature Forecast")
 
 def retrieve_stations(id):
     r = Requester()
