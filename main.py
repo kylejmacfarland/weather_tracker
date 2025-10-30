@@ -5,15 +5,25 @@ import sqlite3
 def to_fahrenheit(c) -> float:
     return c * 1.8 + 32.0
 
+def to_mph(kph) -> float:
+    return kph * 0.621371
+
 def retrieve_observation(latitude, longitude):
     r = Requester()
     data = r.request(f"points/{latitude},{longitude}")
     station_url = data["properties"]["observationStations"]
     data = r.request_url(station_url)
     nearest_station = data["observationStations"][0]
-    data = r.request_url(nearest_station+"/observations/latest")
-    temp = data["properties"]["temperature"]["value"]
-    print(f"Temperature:\t{temp} C, {to_fahrenheit(temp)} F")
+    print(nearest_station+"/observations/latest")
+    data = r.request_url(nearest_station + "/observations/latest")
+    temperature = data["properties"]["temperature"]["value"]
+    print(f"Temperature:\t{temperature} C, {to_fahrenheit(temperature)} F")
+    windspeed = data["properties"]["windSpeed"]["value"]
+    print(f"Wind Speed:\t{windspeed} KPH, {to_mph(windspeed)} MPH")
+    humidity = data["properties"]["relativeHumidity"]["value"]
+    print(f"Humidity:\t{humidity} %")
+    precipitation = data["properties"]["precipitationLastHour"]["value"]
+    print(f"Precipitation (Last Hour):\t{precipitation} mm")
 
 def retrieve_stations(id):
     r = Requester()
@@ -39,6 +49,7 @@ def query_stations():
         print(r)
 
 def main():
+    # Retieve data from NYC
     retrieve_observation(40.7128, -74.0060)
 
 main()
